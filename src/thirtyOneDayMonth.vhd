@@ -60,7 +60,7 @@ entity thirtyOneDayMonth is
 	i_C : in std_logic;
 	i_D : in std_logic;
 	
-	o_Y : std_logic
+	o_Y : out std_logic
 						-- output
   );
 end thirtyOneDayMonth;
@@ -81,6 +81,22 @@ begin
 	--finish assigning signals
 	--w_sel(3) <= i_D;
 	--w_sel(4) <= o_Y;
+	
+	o_Y <= i_D when (w_sel = "000") else
+	       i_D when (w_sel = "001") else
+	       i_D when (w_sel = "010") else
+	       i_D when (w_sel = "011") else
+	       NOT i_D when (w_sel = "100") else
+	       NOT i_D when (w_sel = "101") else
+	       NOT i_D when (w_sel = "110") else
+	       NOT i_D when (w_sel = "111") else
+	       '0';
+	       
+	--o_Y <= i_D when (w_sel(2) = "0") else
+	     --  NOT i_D when (w_sel(2) = "1") else
+	     --  '0';
+	
+	
 	
 	--enter your logic here to implement the mux.  See VHDL reference sheet for MUX syntax.	
 	---------------------------------------------------------------	
